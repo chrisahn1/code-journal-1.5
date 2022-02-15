@@ -16,8 +16,48 @@
 </head>
 <body>
   <header>
+    <h1 class="header">Code Journal</h1>
   </header>
   <main>
+    <div class="container" data-view="entry-form">
+      <form id="create-entry-form">
+        <h2>New Entry</h2>
+        <div class="title-photo-entries">
+          <div class="photo-url">
+            <img class="photo" src="images/placeholder-image-square.jpg" onerror="this.src="images/placeholder-image-square.jpg"">
+          </div>
+          <div class="title-photo-inputs">
+            <div class="title-input">
+              <div class="label">
+                <label for="title">Title</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="title" name="title" size="50">
+              </div>
+            </div>
+            <div class="photo-input">
+              <div class="label">
+                <label for="photo-url">Photo URL</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="photo-url" name="photo-url" size="50">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="notes-entry">
+          <div class="label">
+            <label for="notes">Notes</label>
+          </div>
+          <div>
+            <textarea name="notes" cols="100" rows="10" required></textarea>
+          </div>
+        </div>
+        <div class="save">
+          <button type="submit" class="save-button">Save</button>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
