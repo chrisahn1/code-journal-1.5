@@ -1,5 +1,4 @@
-main {
-  /* display: flex; */
+.container {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -29,8 +28,11 @@ img {
 
 .label {
   padding-bottom: 10px;
+  font-size: 22px;
 }
 
 input {
-  size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 160px;
 }

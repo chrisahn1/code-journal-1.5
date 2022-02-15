@@ -18,42 +18,44 @@
   <header>
   </header>
   <main>
-    <div data-view="entry-form">
-      <h1>New Entry</h1>
-      <div class="title-photo-entries">
-        <div class="photo-url">
-          <img src="images/placeholder-image-square.jpg">
-        </div>
-        <div class="title-photo-inputs">
-          <div class="title-input">
-            <div class="label">
-              <label for="title">Title</label>
+    <div class="container" data-view="entry-form">
+      <form id="create-entry-form">
+        <h1>New Entry</h1>
+        <div class="title-photo-entries">
+          <div class="photo-url">
+            <img class="photo" src="images/placeholder-image-square.jpg" alt="images/placeholder-image-square.jpg">
+          </div>
+          <div class="title-photo-inputs">
+            <div class="title-input">
+              <div class="label">
+                <label for="title">Title</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="title" name="title">
+              </div>
             </div>
-            <div>
-              <input type="text" id="title" name="title" required>
+            <div class="photo-input">
+              <div class="label">
+                <label for="photo-url">Photo URL</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="photo-url" name="photo-url">
+              </div>
             </div>
           </div>
-          <div class="photo-input">
-            <div class="label">
-              <label for="photo-url">Photo URL</label>
-            </div>
-            <div>
-              <input type="text" id="photo-url" name="photo-url" required>
-            </div>
+        </div>
+        <div class="notes-entry">
+          <div class="label">
+            <label for="notes">Notes</label>
+          </div>
+          <div>
+            <textarea name="notes" cols="100" rows="10" required></textarea>
+          </div>
+          <div>
+            <button type="submit" class="save-button">Save</button>
           </div>
         </div>
-      </div>
-      <div class="notes-entry">
-        <div class="label">
-          <label for="notes">Notes</label>
-        </div>
-        <div>
-          <textarea name="notes" cols="100" rows="10" required></textarea>
-        </div>
-        <div>
-          <button class="save-button">Save</button>
-        </div>
-      </div>
+      </form>
     </div>
   </main>
   <script src="js/data.js"></script>
