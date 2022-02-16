@@ -1,9 +1,14 @@
 /* global data */
 /* exported data */
 var createEntryForm = document.querySelector('#create-entry-form');
+var createEntryPage = document.querySelector('.container');
 var inputs = document.querySelector('#create-entry-form').elements;
 var photoInput = document.querySelector('#photo-url');
 var image = document.querySelector('img');
+var viewEntriesButton = document.querySelector('.view-entries-button');
+
+var viewEntryPage = document.querySelector('.container-view-entries');
+// var viewEntryForm = document.querySelector('#view-entries-form');
 
 photoInput.addEventListener('input', changePhoto);
 
@@ -29,4 +34,11 @@ function createEntry(event) {
   image.src = 'images/placeholder-image-square.jpg';
 
   document.querySelector('#create-entry-form').reset();
+}
+
+viewEntriesButton.addEventListener('click', viewEntries);
+
+function viewEntries(event) {
+  createEntryPage.className = 'container hidden';
+  viewEntryPage.className = 'container-view-entries';
 }
