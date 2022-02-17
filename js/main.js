@@ -96,7 +96,7 @@ function entryTree(entry) {
   return li;
 }
 
-function loadingEntries() {
+function loadingEntries(event) {
   var ul = document.querySelector('.entries-list');
 
   for (var i = 0; i < data.entries.length; i++) {
@@ -104,4 +104,4 @@ function loadingEntries() {
   }
 }
 
-loadingEntries();
+document.addEventListener('DOMContentLoaded', loadingEntries);
