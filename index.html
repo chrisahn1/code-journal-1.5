@@ -16,7 +16,10 @@
 </head>
 <body>
   <header>
-    <h1 class="header">Code Journal</h1>
+    <div class="top-header">
+      <h1 class="header">Code Journal</h1>
+      <button class="view-entries-button">Entries</button>
+    </div>
   </header>
   <main>
     <div class="container" data-view="entry-form">
@@ -54,10 +57,26 @@
           </div>
         </div>
         <div class="save">
-          <button type="submit" class="save-button">Save</button>
+          <button type="submit" class="save-button">SAVE</button>
         </div>
       </form>
     </div>
+
+    <div class="container-view-entries hidden" data-view="entries">
+      <form id="view-entries-form">
+        <div class="view-entries-header">
+          <h2>Entries</h2>
+          <button class="new-button">NEW</button>
+        </div>
+        <div class="empty-view">
+          <p>No entries</p>
+        </div>
+        <ul class="entries-list">
+
+        </ul>
+      </form>
+    </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
