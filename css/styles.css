@@ -10,6 +10,10 @@
   display: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 h2 {
   font-size: 30px;
 }
@@ -46,7 +50,7 @@ img {
 }
 
 .photo-url {
-  width: 60%;
+  width: 100%;
 }
 
 .photo-input {
@@ -105,12 +109,12 @@ textarea:focus {
 
 .view-entries-header {
   display: flex;
-
-  /* justify-content: space-between; */
 }
 
 .entries-list {
   list-style-type: none;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .empty-view {
@@ -122,14 +126,20 @@ textarea:focus {
 }
 
 .new-button {
-  /* justify-content: flex-end; */
+  background-color: rebeccapurple;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  font-size: 16px;
+  margin-top: 20px;
   margin-left: auto;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 .entry-row {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 320px) {
@@ -143,6 +153,17 @@ textarea:focus {
 
   .notes-entry {
     padding-top: 20px;
+  }
+
+  .entry-photo {
+    width: 30%;
+    padding: 10px;
+  }
+
+  .entry-title-description {
+    width: 60%;
+    font-size: 12px;
+    padding-left: 10px;
   }
 }
 
@@ -161,6 +182,21 @@ textarea:focus {
 
   .photo-input {
     padding-left: 25px;
+  }
+
+  .entry-photo-url {
+    width: 100%;
+  }
+
+  .entry-photo {
+    width: 60%;
+    padding: 20px;
+  }
+
+  .entry-title-description {
+    width: 60%;
+    font-size: 16px;
+    padding-left: 20px;
   }
 }
 
