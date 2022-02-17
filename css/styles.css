@@ -21,8 +21,11 @@ header {
 
 .top-header {
   display: flex;
-
-  /* margin-right: 480px; */
+  justify-content: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  font-family: sans-serif;
 }
 
 .header {
@@ -36,7 +39,6 @@ header {
   font-family: sans-serif;
   border-width: 0;
   font-size: 20px;
-  margin-left: 10px;
 }
 
 img {
@@ -44,7 +46,7 @@ img {
 }
 
 .photo-url {
-  width: calc(100% / 2);
+  width: 60%;
 }
 
 .photo-input {
@@ -54,6 +56,12 @@ img {
 .label {
   padding-bottom: 10px;
   font-size: 22px;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
 }
 
 input {
@@ -97,23 +105,36 @@ textarea:focus {
 
 .view-entries-header {
   display: flex;
+
+  /* justify-content: space-between; */
+}
+
+.entries-list {
+  list-style-type: none;
+}
+
+.empty-view {
+  text-align: center;
+}
+
+.empty-view.hidden {
+  display: none;
+}
+
+.new-button {
+  /* justify-content: flex-end; */
+  margin-left: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.entry-row {
+  display: flex;
 }
 
 @media screen and (min-width: 320px) {
   .view-entries-button {
     margin-left: 5px;
-  }
-
-  textarea {
-    width: 270px;
-  }
-
-  input {
-    width: 270px;
-  }
-
-  .photo-url {
-    width: 100%;
   }
 
   .photo-input {
@@ -141,36 +162,11 @@ textarea:focus {
   .photo-input {
     padding-left: 25px;
   }
-
-  .photo-url {
-    width: 50%;
-  }
-
-  textarea {
-    width: 500px;
-  }
-
-  input {
-    width: 220px;
-  }
 }
 
 @media screen and (min-width: 569px) {
-  .top-header {
-    justify-content: center;
-    max-width: 1200px;
-  }
-
   .view-entries-button {
     margin-left: 35px;
-  }
-
-  textarea {
-    width: 750px;
-  }
-
-  input {
-    width: 400px;
   }
 
   .notes-entry {
