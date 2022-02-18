@@ -10,6 +10,13 @@
   display: none;
 }
 
+i {
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+i:hover,
 button:hover {
   cursor: pointer;
 }
@@ -80,6 +87,7 @@ textarea:focus {
   box-shadow: 0 0 1px 1px rgb(150 66 233 / 60%);
 }
 
+.edit-save-button,
 .save-button {
   background-color: rebeccapurple;
   color: white;
@@ -142,6 +150,23 @@ textarea:focus {
   margin-right: auto;
 }
 
+.entry-title-edit {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-edit {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sans-serif;
+  max-width: 800px;
+}
+
+.container-edit.hidden {
+  display: none;
+}
+
 @media screen and (min-width: 320px) {
   .view-entries-button {
     margin-left: 5px;
@@ -165,6 +190,10 @@ textarea:focus {
     font-size: 12px;
     padding-left: 10px;
   }
+
+  /* .container-edit {
+    max-width: 500px;
+  } */
 }
 
 @media screen and (min-width: 568px) {
@@ -208,4 +237,8 @@ textarea:focus {
   .notes-entry {
     padding-top: 10px;
   }
+
+  /* .container-edit {
+    max-width: 800px;
+  } */
 }

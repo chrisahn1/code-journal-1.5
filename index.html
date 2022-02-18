@@ -53,7 +53,7 @@
             <label for="notes">Notes</label>
           </div>
           <div>
-            <textarea name="notes" cols="100" rows="10" required></textarea>
+            <textarea name="notes" cols="100" rows="10" id="create-textarea" required></textarea>
           </div>
         </div>
         <div class="save">
@@ -74,6 +74,46 @@
         <ul class="entries-list">
 
         </ul>
+      </form>
+    </div>
+
+    <div class="container-edit hidden" data-view="edit-entry-form">
+      <form id="edit-entry-form">
+        <h2>Edit Entry</h2>
+        <div class="title-photo-entries">
+          <div class="photo-url">
+            <img class="edit-photo" src="images/placeholder-image-square.jpg">
+          </div>
+          <div class="title-photo-inputs">
+            <div class="title-input">
+              <div class="label">
+                <label for="title">Title</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="edit-title" name="title" size="50">
+              </div>
+            </div>
+            <div class="photo-input">
+              <div class="label">
+                <label for="photo-url">Photo URL</label>
+              </div>
+              <div>
+                <input required autofocus type="text" id="edit-photo-url" name="photo-url" size="50">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="notes-entry">
+          <div class="label">
+            <label for="notes">Notes</label>
+          </div>
+          <div>
+            <textarea name="notes" cols="100" rows="10" id="edit-textarea" required></textarea>
+          </div>
+        </div>
+        <div class="save">
+          <button type="submit" class="edit-save-button">SAVE</button>
+        </div>
       </form>
     </div>
 
