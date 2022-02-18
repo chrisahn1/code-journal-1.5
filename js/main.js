@@ -9,8 +9,22 @@ var photoInput = document.querySelector('#photo-url');
 var image = document.querySelector('img');
 var viewEntriesButton = document.querySelector('.view-entries-button');
 
+var emptyView = document.querySelector('.empty-view');
+
+checkEmptyEntries();
+
+function checkEmptyEntries() {
+  if (data.entries.length > 0) {
+    emptyView.className = 'empty-view hidden';
+  } else {
+    emptyView.className = 'empty-view';
+  }
+}
+
 var viewEntryPage = document.querySelector('.container-view-entries');
 var newButton = document.querySelector('.new-button');
+
+var editForm = document.querySelector('.container-edit');
 
 photoInput.addEventListener('input', changePhoto);
 
@@ -40,6 +54,8 @@ function createEntry(event) {
   var ul = document.querySelector('.entries-list');
   ul.appendChild(entryTree(data.entries[0]));
 
+  checkEmptyEntries();
+
   createEntryPage.className = 'container hidden';
   viewEntryPage.className = 'container-view-entries';
 }
@@ -49,6 +65,7 @@ viewEntriesButton.addEventListener('click', viewEntries);
 function viewEntries(event) {
   createEntryPage.className = 'container hidden';
   viewEntryPage.className = 'container-view-entries';
+  editForm.className = 'container-edit hidden';
 }
 
 newButton.addEventListener('click', newEntry);
@@ -61,15 +78,9 @@ function newEntry(event) {
 // VIEW
 function entryTree(entry) {
 
-  var emptyView = document.querySelector('.empty-view');
-  if (data.entries.length > 0) {
-    emptyView.className = 'empty-view hidden';
-  } else {
-    emptyView.className = 'empty-view';
-  }
-
   var li = document.createElement('li');
-  li.setAttribute('class', 'entry-row');
+  li.setAttribute('id', 'entry-row');
+  li.setAttribute('class', 'number' + entry.nextEntryId);
   var photo = document.createElement('div');
   var image = document.createElement('img');
 
@@ -119,66 +130,65 @@ function loadingEntries(event) {
 document.addEventListener('DOMContentLoaded', loadingEntries);
 
 // EDIT
-var editForm = document.querySelector('.container-edit');
 var editEntryForm = document.querySelector('#edit-entry-form');
-var editTitle = document.querySelector('#edit-title');
-var editDescription = document.querySelector('#edit-textarea');
-var editPhotoURL = document.querySelector('#edit-photo-url');
-var editPhoto = document.querySelector('.edit-photo');
+var editInputs = document.querySelector('#edit-entry-form').elements;
 
-document.addEventListener('click', editEntryClick);
+var editPhotoInput = document.querySelector('#edit-photo-url');
+var editImage = document.querySelector('.edit-photo');
 
-function editEntryClick(event) {
-  var edit = document.querySelectorAll('i');
-  for (var i = 0; i < edit.length; i++) {
-    if (edit[i].getAttribute('id') === event.target.id) {
-      viewEntryPage.className = 'container-view-entries hidden';
-      editForm.className = 'container-edit';
-      editEntryInputs(edit[i].getAttribute('id'));
-      break;
-    }
-  }
+var currentID = '';
+
+editPhotoInput.addEventListener('input', editChangePhoto);
+
+function editChangePhoto(event) {
+  editImage.src = editInputs[1].value;
 }
 
-function editEntryInputs(entryID) {
-  var obj = {};
+var pen = document.querySelector('ul');
+
+pen.addEventListener('click', editEntryClick);
+
+function editEntryClick(event) {
+  var element = event.target.closest('i');
   for (var i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].nextEntryId === parseInt(entryID)) {
-      obj.photoURL = data.entries[i].photoURL;
-      obj.title = data.entries[i].title;
-      obj.notes = data.entries[i].notes;
+    if (data.entries[i].nextEntryId === parseInt(element.id)) {
+      editInputs[0].value = data.entries[i].title;
+      editInputs[1].value = data.entries[i].photoURL;
+      editInputs[2].value = data.entries[i].notes;
+      currentID = data.entries[i].nextEntryId;
+      editChangePhoto();
       break;
     }
   }
-  editPhoto.src = obj.photoURL;
-  editTitle.value = obj.title;
-  editPhotoURL.value = obj.photoURL;
-  editDescription.value = obj.notes;
+  createEntryPage.className = 'container hidden';
+  viewEntryPage.className = 'container-view-entries hidden';
+  editForm.className = 'container-edit';
+
 }
 
 editEntryForm.addEventListener('submit', editNewEntry);
 
 function editNewEntry(event) {
   event.preventDefault();
-  var obj = {};
 
-  obj.title = inputs[0].value;
-  obj.photoURL = inputs[1].value;
-  obj.notes = inputs[2].value;
-  obj.nextEntryId = data.nextEntryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].nextEntryId === parseInt(currentID)) {
+      data.entries[i].title = editInputs[0].value;
+      data.entries[i].photoURL = editInputs[1].value;
+      data.entries[i].notes = editInputs[2].value;
 
-  data.nextEntryId++;
+      var previousID = document.querySelector('.number' + data.entries[i].nextEntryId.toString());
+      previousID.replaceWith(entryTree(data.entries[i]));
 
-  data.entries.unshift(obj);
+      break;
+    }
+  }
+  document.querySelector('#edit-entry-form').reset();
 
-  image.src = 'images/placeholder-image-square.jpg';
-
-  document.querySelector('#create-entry-form').reset();
-
-  var ul = document.querySelector('.entries-list');
-  ul.appendChild(entryTree(data.entries[0]));
+  checkEmptyEntries();
 
   createEntryPage.className = 'container hidden';
-  editForm.className = 'container-edit hidden';
   viewEntryPage.className = 'container-view-entries';
+  editForm.className = 'container-edit hidden';
+
 }

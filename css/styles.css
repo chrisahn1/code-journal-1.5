@@ -144,7 +144,7 @@ textarea:focus {
   margin-left: auto;
 }
 
-.entry-row {
+#entry-row {
   display: flex;
   margin-left: auto;
   margin-right: auto;
