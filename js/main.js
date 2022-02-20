@@ -192,3 +192,63 @@ function editNewEntry(event) {
   editForm.className = 'container-edit hidden';
 
 }
+
+// DELETE
+var deleteButton = document.querySelector('.delete-entry');
+var buttonConfirm = document.querySelector('.confirm');
+var buttonCancel = document.querySelector('.cancel');
+var dialogBox = document.querySelector('.box');
+
+var inputEdit = document.querySelector('input');
+var textArea = document.querySelector('textarea');
+var saveEdit = document.querySelector('.edit-save-button');
+
+deleteButton.addEventListener('click', openBox);
+buttonConfirm.addEventListener('click', replyBoxConfirm);
+buttonCancel.addEventListener('click', replyBoxCancel);
+
+function openBox(event) {
+  deleteButton.disabled = true;
+  inputEdit.disabled = true;
+  textArea.disabled = true;
+  saveEdit.disabled = true;
+  viewEntriesButton.disabled = true;
+  dialogBox.className = 'box open';
+}
+
+function replyBoxCancel(event) {
+  event.preventDefault();
+  deleteButton.disabled = false;
+  inputEdit.disabled = false;
+  textArea.disabled = false;
+  saveEdit.disabled = false;
+  viewEntriesButton.disabled = false;
+  dialogBox.className = 'box closed';
+}
+
+function replyBoxConfirm(event) {
+  event.preventDefault();
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].nextEntryId === parseInt(currentID)) {
+      var previousID = document.querySelector('.number' + data.entries[i].nextEntryId.toString());
+      previousID.remove();
+
+      data.entries.splice(i, 1);
+      break;
+    }
+  }
+
+  checkEmptyEntries();
+
+  deleteButton.disabled = false;
+  inputEdit.disabled = false;
+  textArea.disabled = false;
+  saveEdit.disabled = false;
+  viewEntriesButton.disabled = false;
+  dialogBox.className = 'box closed';
+
+  createEntryPage.className = 'container hidden';
+  viewEntryPage.className = 'container-view-entries';
+  editForm.className = 'container-edit hidden';
+}

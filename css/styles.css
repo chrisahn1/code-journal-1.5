@@ -167,6 +167,72 @@ textarea:focus {
   display: none;
 }
 
+.delete-save {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.delete-entry {
+  background-color: white;
+  color: rebeccapurple;
+  text-decoration: underline;
+  border-width: 0;
+  font-size: 20px;
+}
+
+.box {
+  justify-content: center;
+  text-align: center;
+}
+
+.box.closed {
+  display: none;
+}
+
+.box.open {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.432);
+}
+
+.modal {
+  background-color: white;
+  margin: 30vh auto;
+  padding: 20px;
+  border-radius: 1rem;
+}
+
+.modal-question {
+  font-size: 23px;
+}
+
+.reply {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cancel {
+  border-radius: 5px;
+  border-width: 0;
+  background-color: lightgray;
+}
+
+.confirm {
+  color: white;
+  border-radius: 5px;
+  border-width: 0;
+  background-color: red;
+}
+
 @media screen and (min-width: 320px) {
   .view-entries-button {
     margin-left: 5px;
@@ -191,9 +257,24 @@ textarea:focus {
     padding-left: 10px;
   }
 
-  /* .container-edit {
-    max-width: 500px;
-  } */
+  .container-view-entries,
+  .container-edit {
+    max-width: 280px;
+  }
+
+  .cancel {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .confirm {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .modal {
+    width: 60%;
+  }
 }
 
 @media screen and (min-width: 568px) {
@@ -203,6 +284,11 @@ textarea:focus {
 
   .title-photo-entries {
     display: flex;
+  }
+
+  .container-view-entries,
+  .container-edit {
+    max-width: 525px;
   }
 
   .title-input {
@@ -227,6 +313,20 @@ textarea:focus {
     font-size: 16px;
     padding-left: 20px;
   }
+
+  .cancel {
+    font-size: 12px;
+    padding: 5px 15px;
+  }
+
+  .confirm {
+    font-size: 12px;
+    padding: 5px 15px;
+  }
+
+  .modal {
+    width: 50%;
+  }
 }
 
 @media screen and (min-width: 569px) {
@@ -238,7 +338,22 @@ textarea:focus {
     padding-top: 10px;
   }
 
-  /* .container-edit {
+  .cancel {
+    font-size: 20px;
+    padding: 5px 20px;
+  }
+
+  .confirm {
+    font-size: 20px;
+    padding: 5px 20px;
+  }
+
+  .modal {
+    width: 40%;
+  }
+
+  .container-view-entries,
+  .container-edit {
     max-width: 800px;
-  } */
+  }
 }
