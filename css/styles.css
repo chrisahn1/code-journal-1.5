@@ -349,7 +349,11 @@ textarea:focus {
   }
 
   .modal {
-    width: 40%;
+    width: 30%;
+  }
+
+  .modal-question {
+    font-size: 19.5px;
   }
 
   .container-view-entries,
